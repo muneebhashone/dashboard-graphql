@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Box, Container } from '@material-ui/core';
-
 import Toolbar from 'src/components/brands/Toolbar';
 import Form from 'src/components/brands/Form';
 

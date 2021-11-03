@@ -15,8 +15,6 @@ import {
 } from '@material-ui/core';
 import ActionMenu from '../action-menu/ActionMenu';
 import { useNavigate } from 'react-router';
-import { useMutation } from 'react-query';
-import { deleteBrand } from 'src/requests';
 import { toast } from 'react-toastify';
 
 const Results = ({ refetchData, data, ...rest }) => {
@@ -25,9 +23,7 @@ const Results = ({ refetchData, data, ...rest }) => {
   const [page, setPage] = useState(0);
   const [startPoint, setStartPoint] = useState(0);
   const [endPoint, setEndPoint] = useState(0);
-  const deleteMutation = useMutation('deleteBrand', (data) =>
-    deleteBrand(data)
-  );
+
   const notifyDelete = () => toast('Delete Success');
   const navigate = useNavigate();
 
@@ -54,15 +50,15 @@ const Results = ({ refetchData, data, ...rest }) => {
   };
 
   const handleDelete = (id) => {
-    deleteMutation.mutate(
-      { id: id },
-      {
-        onSuccess: () => {
-          notifyDelete();
-          refetchData();
-        }
-      }
-    );
+    // deleteMutation.mutate(
+    //   { id: id },
+    //   {
+    //     onSuccess: () => {
+    //       notifyDelete();
+    //       refetchData();
+    //     }
+    //   }
+    // );
   };
 
   useEffect(() => {

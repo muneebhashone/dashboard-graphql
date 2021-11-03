@@ -13,8 +13,6 @@ import {
   Typography
 } from '@material-ui/core';
 import { useFormik } from 'formik';
-import { updateBrand, addBrand } from 'src/requests';
-import { useMutation } from 'react-query';
 import uploadToCloudinary from 'src/utils/uploadToCloudinary';
 import { useParams } from 'react-router';
 import { toast } from 'react-toastify';
@@ -26,9 +24,6 @@ const validationSchema = Yup.object().shape({
 });
 
 const Form = ({ data }) => {
-  const updateMutation = useMutation((data) => updateBrand(data));
-  const addMutation = useMutation((data) => addBrand(data));
-
   const params = useParams();
 
   const notifyEdit = () => toast('Edit Success');
@@ -54,41 +49,41 @@ const Form = ({ data }) => {
   });
 
   const handleEditSubmit = (values) => {
-    updateMutation.mutate(
-      {
-        id: params.id,
-        title: values.title,
-        description: values.description,
-        image: values.image,
-        active: values.status
-      },
-      {
-        onSuccess: (data) => {
-          notifyEdit();
-          console.log(data);
-        },
-        onError: (err) => console.log(err)
-      }
-    );
+    // updateMutation.mutate(
+    //   {
+    //     id: params.id,
+    //     title: values.title,
+    //     description: values.description,
+    //     image: values.image,
+    //     active: values.status
+    //   },
+    //   {
+    //     onSuccess: (data) => {
+    //       notifyEdit();
+    //       console.log(data);
+    //     },
+    //     onError: (err) => console.log(err)
+    //   }
+    // );
   };
 
   const handleAddSubmit = (values) => {
-    addMutation.mutate(
-      {
-        title: values.title,
-        description: values.description,
-        image: values.image,
-        active: values.status
-      },
-      {
-        onSuccess: (data) => {
-          notifyAdd();
-          formik.resetForm();
-          console.log(data);
-        },
-        onError: (err) => console.log(err)
-      }
-    );
+    // addMutation.mutate(
+    //   {
+    //     title: values.title,
+    //     description: values.description,
+    //     image: values.image,
+    //     active: values.status
+    //   },
+    //   {
+    //     onSuccess: (data) => {
+    //       notifyAdd();
+    //       formik.resetForm();
+    //       console.log(data);
+    //     },
+    //     onError: (err) => console.log(err)
+    //   }
+    // );
   };
 
   const handleImage = async (image) => {
