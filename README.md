@@ -1,1 +1,1 @@
-## [Dashboard Rest API]
+## [Dashboard GraphQL]
